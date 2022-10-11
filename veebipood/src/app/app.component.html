@@ -1,0 +1,17 @@
+<!-- 
+  router-outlet --- sisu      localhost:4200             Avaleht
+                              localhost:4200/ostukorv    Ostukorv
+
+  Kõik mis on router-outletist ülevalpool on menüü - seda näidatakse igal lehel
+
+  Kõik mis on router-outletist allpool on footer - seda näidatakse igal lehel
+-->
+<button routerLink="/">Avalehele</button>
+<button routerLink="/lisa-toode">Toodet lisama</button>
+<button routerLink="/ostukorv">Ostukorvi</button>
+
+<router-outlet></router-outlet>
+
+<button class="nupp">Vajuta</button>
+
+<img class="pilt" src="https://estonia.ee/wp-content/uploads/nobe_netist_4.jpg" alt="Nobe auto">

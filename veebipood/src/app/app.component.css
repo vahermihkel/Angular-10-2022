@@ -1,0 +1,19 @@
+.nupp {
+  background-color: brown;
+  color: white;
+  width: 60px;
+}
+
+.nupp:hover {
+  font-weight: bold;
+}
+
+.pilt {
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.pilt:hover {
+  opacity: 0.7;
+}
