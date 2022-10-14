@@ -1,2 +1,19 @@
 <p>avaleht works!</p>
 <div>Olen avalehel</div>
+
+
+<button (click)="muudaLike(!liked)">Muuda like</button>
+<img *ngIf="liked === true" (click)="muudaLike(false)" src="assets/liked.svg" alt="">
+<img *ngIf="liked === false" (click)="muudaLike(true)" src="assets/not-liked.svg" alt="">
+
+<br><br>
+<button *ngIf="kogus > 0" (click)="nulli()">Nulli</button> <br>
+<button [disabled]="kogus === 0" (click)="vahenda()">-</button>
+<div>{{ kogus }}</div>
+<button [disabled]="kogus === 10" (click)="suurenda()">+</button>
+
+<!-- 
+  string interpolation
+  {{ }} --- mille vahel on muutuja, mida otsitakse .ts failist
+
+-->

@@ -1,1 +1,15 @@
-<p>lisa-toode works!</p>
+<div>{{ sonum }}</div>
+
+<form (ngSubmit)="lisaToode()" #lisamiseVorm="ngForm">
+  <label>Toote nimi</label> <br>
+  <input type="number"> <br>
+  <button *ngIf="sonum === 'Lisa uus toode!'">Sisesta</button> <br>
+</form>
+
+<!-- a-form    ngForm -->
+
+<!-- No directive found with exportAs 'ngForm'
+  kui import on tegemata
+-->
+
+<!-- onSubmit -->

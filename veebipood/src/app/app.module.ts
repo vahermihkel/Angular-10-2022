@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AvalehtComponent } from './avaleht/avaleht.component';
 import { OstukorvComponent } from './ostukorv/ostukorv.component';
 import { LisaToodeComponent } from './lisa-toode/lisa-toode.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import { LisaToodeComponent } from './lisa-toode/lisa-toode.component';
     OstukorvComponent,
     LisaToodeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+  imports: [  // IMPORDIN HTMLi MIDA EI EKSISTEERI TAVA HTML-s
+    BrowserModule, // <--- *ngIf
+    AppRoutingModule, // <--- routerLink=""    <router-outlet><router-outlet/>
+    FormsModule //    ngForm
   ],
   providers: [],
   bootstrap: [AppComponent]

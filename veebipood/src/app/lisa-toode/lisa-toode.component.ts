@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lisa-toode.component.css']
 })
 export class LisaToodeComponent implements OnInit {
+  sonum = "Lisa uus toode!";
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  lisaToode() {
+    this.sonum = "Uus toode lisatud!"
   }
 
 }
