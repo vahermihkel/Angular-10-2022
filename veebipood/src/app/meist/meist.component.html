@@ -1,0 +1,11 @@
+<div>Meie telefon: 
+  {{ telefon }}
+  <button *ngIf="telefon.startsWith('+372') === false && telefon !== 'Telefoni pole veel sisestatud'" (click)="lisaSuunakood()">Pane suunakood ette</button>
+  <!-- *ngIf="telefon !== ''" -->
+</div>
+<div>Meie email: 
+  
+  <span *ngIf="n2itaEmaili === true">{{ email }} </span>
+  <button *ngIf="n2itaEmaili === false" (click)="kuvaEmaili()">Näita emaili</button>
+
+</div>

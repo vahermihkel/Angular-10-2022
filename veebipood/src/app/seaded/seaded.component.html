@@ -1,0 +1,23 @@
+<div>{{ veebileheKeel }}</div>
+
+<form (ngSubmit)="salvestaKeel(keeleVorm)" #keeleVorm="ngForm">
+  <button type="button">Info</button>
+  <label>Veebilehe keel</label> <br>
+  <input ngModel name="keel" type="text"> <br>
+  <button>Sisesta</button>
+</form>
+
+<!-- <form #keeleVorm="ngForm">
+  <button>Info</button>
+  <label>Veebilehe keel</label> <br>
+  <input type="text"> <br>
+  <button (click)="salvestaKeel()">Sisesta</button>
+</form> -->
+
+<form (ngSubmit)="salvestaKontaktid(kontaktVorm)" #kontaktVorm="ngForm">
+  <label>Kontakt telefon</label> <br>
+  <input ngModel name="telefon" type="text"> <br>
+  <label>Kontakt email</label> <br>
+  <input ngModel name="email" type="text"> <br>
+  <button>Sisesta</button>
+</form>

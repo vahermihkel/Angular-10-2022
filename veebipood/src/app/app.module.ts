@@ -7,13 +7,17 @@ import { AvalehtComponent } from './avaleht/avaleht.component';
 import { OstukorvComponent } from './ostukorv/ostukorv.component';
 import { LisaToodeComponent } from './lisa-toode/lisa-toode.component';
 import { FormsModule } from '@angular/forms';
+import { SeadedComponent } from './seaded/seaded.component';
+import { MeistComponent } from './meist/meist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AvalehtComponent,
     OstukorvComponent,
-    LisaToodeComponent
+    LisaToodeComponent,
+    SeadedComponent,
+    MeistComponent
   ],
   imports: [  // IMPORDIN HTMLi MIDA EI EKSISTEERI TAVA HTML-s
     BrowserModule, // <--- *ngIf
