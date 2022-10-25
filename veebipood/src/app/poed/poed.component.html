@@ -1,0 +1,31 @@
+<form (ngSubmit)="lisa(poeVorm)" #poeVorm="ngForm">
+  <label>Uue poe nimi</label> <br>
+  <input ngModel name="pood" type="text"> <br>
+  <button>Sisesta</button> <br>
+</form>
+
+<button (click)="sorteeriAZ()">Sorteeri A-Z</button>
+<button (click)="sorteeriZA()">Sorteeri Z-A</button>
+<button (click)="filtreeri()">Jäta sisse "mäe"-ga lõppevad</button>
+<button (click)="muudaK6iki()">Lisa igaühele -- ette</button>
+<button (click)="originaali()">Muuda tagasi</button>
+<button (click)="tyhjenda()">Tühjenda</button>
+<button (click)="sorteeriKasvavalt()">Sorteeri tähtede arvu järgi kasvavalt</button>
+
+<div>{{ poed.length }} tk</div>
+<div *ngFor="let pood of poed">
+  {{ pood }}
+  <button (click)="kustuta(pood)">x</button>
+</div>
+
+<br>
+<div>-------------------------</div>
+<br>
+
+<div>Mustamäe</div>
+<div>Kristiine</div>
+<div>Põhja-Tallinn</div>
+<div>Lasnamäe</div>
+<div>Õismäe</div>
+<div>Ülemiste</div>
+<div>Kesklinn</div>

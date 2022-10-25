@@ -9,6 +9,7 @@ import { LisaToodeComponent } from './lisa-toode/lisa-toode.component';
 import { FormsModule } from '@angular/forms';
 import { SeadedComponent } from './seaded/seaded.component';
 import { MeistComponent } from './meist/meist.component';
+import { PoedComponent } from './poed/poed.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MeistComponent } from './meist/meist.component';
     OstukorvComponent,
     LisaToodeComponent,
     SeadedComponent,
-    MeistComponent
+    MeistComponent,
+    PoedComponent,
   ],
   imports: [  // IMPORDIN HTMLi MIDA EI EKSISTEERI TAVA HTML-s
     BrowserModule, // <--- *ngIf

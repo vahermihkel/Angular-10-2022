@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AvalehtComponent implements OnInit {
   kogus = 5;
   liked = false;
+  sonum = "";
 
   constructor() { }
 
@@ -16,15 +17,22 @@ export class AvalehtComponent implements OnInit {
 
   nulli() {
     this.kogus = 0;
+    this.sonum = "Kogus nullitud";
   }
 
   vahenda() {
     //   4     =     5      -  1
     this.kogus = this.kogus - 1;
+    this.sonum = "Kogus vähendatud"
   }
 
   suurenda() {
-    this.kogus = this.kogus + 1;
+    if (this.kogus === 10) { // sulgude sees on avaldis, mis küsib kas on tõene
+      this.sonum = "Ei saa suurendada, maksimum kogus on 10"; // tõene blokk
+    } else {
+      this.kogus = this.kogus + 1; // väär blokk
+      this.sonum = "Kogus suurendatud";
+    }
   }
 
   muudaLike(uusVaartus: boolean) {

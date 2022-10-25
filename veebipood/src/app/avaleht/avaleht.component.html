@@ -7,10 +7,16 @@
 <img *ngIf="liked === false" (click)="muudaLike(true)" src="assets/not-liked.svg" alt="">
 
 <br><br>
+
+<div>{{ sonum }}</div>
+<div *ngIf="kogus === 10">Maksimum kogus on 10</div>
+
 <button *ngIf="kogus > 0" (click)="nulli()">Nulli</button> <br>
 <button [disabled]="kogus === 0" (click)="vahenda()">-</button>
 <div>{{ kogus }}</div>
-<button [disabled]="kogus === 10" (click)="suurenda()">+</button>
+<!-- <button [disabled]="kogus === 10" (click)="suurenda()">+</button> -->
+<button (click)="suurenda()">+</button>
+
 
 <!-- 
   string interpolation
