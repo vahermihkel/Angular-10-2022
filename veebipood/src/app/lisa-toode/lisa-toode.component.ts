@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-lisa-toode',
@@ -13,8 +14,30 @@ export class LisaToodeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  lisaToode() {
-    this.sonum = "Uus toode lisatud!"
+  lisaToode(vorm: NgForm) {
+    this.sonum = "Uus toode lisatud!";
+                    // "["Coca-cola", "Fanta", "Sprite"]"   ||    "[]"
+    const tootedLS = localStorage.getItem("tooted") || "[]";
+                    // ["Coca-cola", "Fanta", "Sprite"]    ||   []
+    const tooted = JSON.parse(tootedLS);
+                    // ["Coca-cola", "Fanta", "Sprite", "Vichy"]  ||   ["Vichy"]
+    tooted.push(vorm.value.nimi);
+                    // "["Coca-cola", "Fanta", "Sprite", "Vichy"]"  ||   "["Vichy"]"
+    const uuedTooted = JSON.stringify(tooted);
+                    //   "tooted"   |   "["Coca-cola", "Fanta", "Sprite", "Vichy"]" 
+                    //   "tooted"   |   "["Vichy"]"
+    localStorage.setItem("tooted", uuedTooted);
+
+
+    // const tooted2 = JSON.parse(localStorage.getItem("tooted") || "[]");
+    // tooted2.push(vorm.value.nimi);
+    // localStorage.setItem("tooted", JSON.stringify(tooted2));
   }
+
+    // 1. võtan localStorage-st
+    // 2. võtan jutumärgid maha
+    // 3. pushin ühe juurde
+    // 4. panen jutumärgid tagasi
+    // 5. panen localStorage-sse tagasi
 
 }

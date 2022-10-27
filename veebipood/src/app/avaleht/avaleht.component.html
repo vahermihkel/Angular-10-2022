@@ -1,6 +1,13 @@
-<p>avaleht works!</p>
-<div>Olen avalehel</div>
+<br><br><br>
 
+<div *ngFor="let toode of tooted">
+  {{ toode }}
+  <button (click)="lisaOstukorvi(toode)">Lisa ostukorvi</button>
+</div>
+
+
+<div>------------------------</div>
+<br><br><br>
 
 <button (click)="muudaLike(!liked)">Muuda like</button>
 <img *ngIf="liked === true" (click)="muudaLike(false)" src="assets/liked.svg" alt="">

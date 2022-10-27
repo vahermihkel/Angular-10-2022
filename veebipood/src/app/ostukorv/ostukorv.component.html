@@ -1,1 +1,10 @@
-<p>ostukorv works!</p>
+
+<button *ngIf="ostukorv.length > 0" (click)="tyhjenda()">Tühjenda</button>
+<div *ngIf="ostukorv.length > 0">Ostukorvis {{ ostukorv.length }} tk</div>
+<div *ngIf="ostukorv.length === 0">Ostukorv on tühi</div>
+
+<div *ngFor="let ese of ostukorv">
+  {{ ese }}
+  <button (click)="kustuta(ese)">x</button>
+  <button (click)="lisa(ese)">+</button>
+</div>

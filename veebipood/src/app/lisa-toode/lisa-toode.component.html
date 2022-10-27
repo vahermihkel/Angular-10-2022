@@ -1,8 +1,8 @@
 <div>{{ sonum }}</div>
 
-<form (ngSubmit)="lisaToode()" #lisamiseVorm="ngForm">
+<form (ngSubmit)="lisaToode(lisamiseVorm)" #lisamiseVorm="ngForm">
   <label>Toote nimi</label> <br>
-  <input type="number"> <br>
+  <input ngModel name="nimi" type="text"> <br>
   <button *ngIf="sonum === 'Lisa uus toode!'">Sisesta</button> <br>
 </form>
 

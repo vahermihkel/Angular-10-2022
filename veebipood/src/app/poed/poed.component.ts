@@ -11,6 +11,7 @@ export class PoedComponent implements OnInit {
   // saan muuta järjekorda, arvu
   // kui neid on meeletu hulk
   poed = poedFailist;
+  tootajad = ["Johnny", "George", "Michael", "James"];
 
 // list, array, massiiv
 

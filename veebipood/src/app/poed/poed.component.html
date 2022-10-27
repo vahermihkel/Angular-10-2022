@@ -13,9 +13,20 @@
 <button (click)="sorteeriKasvavalt()">Sorteeri tähtede arvu järgi kasvavalt</button>
 
 <div>{{ poed.length }} tk</div>
-<div *ngFor="let pood of poed">
-  {{ pood }}
-  <button (click)="kustuta(pood)">x</button>
+
+<div class="arrayd">
+  <div>
+    <div *ngFor="let pood of poed">
+      {{ pood }}
+      <button (click)="kustuta(pood)">x</button>
+    </div>
+  </div>
+
+  <div>
+    <div *ngFor="let tootaja of tootajad">
+      {{ tootaja }}
+    </div>
+  </div>
 </div>
 
 <br>
