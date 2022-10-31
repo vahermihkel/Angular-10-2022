@@ -17,21 +17,21 @@ export class LisaToodeComponent implements OnInit {
   lisaToode(vorm: NgForm) {
     this.sonum = "Uus toode lisatud!";
                     // "["Coca-cola", "Fanta", "Sprite"]"   ||    "[]"
-    const tootedLS = localStorage.getItem("tooted") || "[]";
-                    // ["Coca-cola", "Fanta", "Sprite"]    ||   []
-    const tooted = JSON.parse(tootedLS);
-                    // ["Coca-cola", "Fanta", "Sprite", "Vichy"]  ||   ["Vichy"]
+    // const tootedLS = localStorage.getItem("tooted") || "[]";
+    //                 // ["Coca-cola", "Fanta", "Sprite"]    ||   []
+    // const tooted = JSON.parse(tootedLS);
+    //                 // ["Coca-cola", "Fanta", "Sprite", "Vichy"]  ||   ["Vichy"]
+    // tooted.push(vorm.value.nimi);
+    //                 // "["Coca-cola", "Fanta", "Sprite", "Vichy"]"  ||   "["Vichy"]"
+    // const uuedTooted = JSON.stringify(tooted);
+    //                 //   "tooted"   |   "["Coca-cola", "Fanta", "Sprite", "Vichy"]" 
+    //                 //   "tooted"   |   "["Vichy"]"
+    // localStorage.setItem("tooted", uuedTooted);
+
+
+    const tooted = JSON.parse(localStorage.getItem("tooted") || "[]");
     tooted.push(vorm.value.nimi);
-                    // "["Coca-cola", "Fanta", "Sprite", "Vichy"]"  ||   "["Vichy"]"
-    const uuedTooted = JSON.stringify(tooted);
-                    //   "tooted"   |   "["Coca-cola", "Fanta", "Sprite", "Vichy"]" 
-                    //   "tooted"   |   "["Vichy"]"
-    localStorage.setItem("tooted", uuedTooted);
-
-
-    // const tooted2 = JSON.parse(localStorage.getItem("tooted") || "[]");
-    // tooted2.push(vorm.value.nimi);
-    // localStorage.setItem("tooted", JSON.stringify(tooted2));
+    localStorage.setItem("tooted", JSON.stringify(tooted));
   }
 
     // 1. võtan localStorage-st

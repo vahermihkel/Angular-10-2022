@@ -1,7 +1,11 @@
 <br><br><br>
 
-<div *ngFor="let toode of tooted">
-  {{ toode }}
+<div *ngFor="let toode of tooted; let i = index">
+
+  <div routerLink="/toode/{{i}}">
+    {{ toode }}
+  </div>
+
   <button (click)="lisaOstukorvi(toode)">Lisa ostukorvi</button>
 </div>
 

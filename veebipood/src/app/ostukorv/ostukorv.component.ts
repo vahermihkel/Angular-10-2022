@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ostukorv.component.css']
 })
 export class OstukorvComponent implements OnInit {
-  ostukorv = ["Coca-cola", "Fanta", "Sprite"];
+  ostukorv = JSON.parse(localStorage.getItem("ostukorv") || "[]");
 
   constructor() { }
 
@@ -17,16 +17,19 @@ export class OstukorvComponent implements OnInit {
   kustuta(klikitudEse: string) {
     const j2rjekorraNumber = this.ostukorv.indexOf(klikitudEse);
     this.ostukorv.splice(j2rjekorraNumber,1);
+    localStorage.setItem("ostukorv", JSON.stringify(this.ostukorv));
   }
 
   tyhjenda() {
     // this.ostukorv.splice(0);
     this.ostukorv = [];
+    localStorage.setItem("ostukorv", JSON.stringify(this.ostukorv));
   }
 
   //   
   lisa(klikitudEse: string) {
     this.ostukorv.push(klikitudEse);
+    localStorage.setItem("ostukorv", JSON.stringify(this.ostukorv));
   }
 
 }

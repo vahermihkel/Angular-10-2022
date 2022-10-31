@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SeadedComponent } from './seaded/seaded.component';
 import { MeistComponent } from './meist/meist.component';
 import { PoedComponent } from './poed/poed.component';
+import { YksikToodeComponent } from './yksik-toode/yksik-toode.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PoedComponent } from './poed/poed.component';
     SeadedComponent,
     MeistComponent,
     PoedComponent,
+    YksikToodeComponent,
   ],
   imports: [  // IMPORDIN HTMLi MIDA EI EKSISTEERI TAVA HTML-s
     BrowserModule, // <--- *ngIf

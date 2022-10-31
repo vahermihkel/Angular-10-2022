@@ -18,16 +18,16 @@ export class AvalehtComponent implements OnInit {
   }
 
   lisaOstukorvi(klikitudToode: string) {
-    const ostukorvLS = localStorage.getItem("ostukorv") || "[]";
-    const ostukorv = JSON.parse(ostukorvLS);
+    // const ostukorvLS = localStorage.getItem("ostukorv") || "[]";
+    // const ostukorv = JSON.parse(ostukorvLS);
+    // ostukorv.push(klikitudToode);
+    // const uuenenudOstukorv = JSON.stringify(ostukorv);
+    // localStorage.setItem("ostukorv", uuenenudOstukorv);
+
+
+    const ostukorv = JSON.parse(localStorage.getItem("ostukorv") || "[]");
     ostukorv.push(klikitudToode);
-    const uuenenudOstukorv = JSON.stringify(ostukorv);
-    localStorage.setItem("ostukorv", uuenenudOstukorv);
-
-
-    // const ostukorv2 = JSON.parse(localStorage.getItem("ostukorv") || "[]");
-    // ostukorv2.push(klikitudToode);
-    // localStorage.setItem("ostukorv", JSON.stringify(ostukorv2));
+    localStorage.setItem("ostukorv", JSON.stringify(ostukorv));
   }
 
   // 1. võta localStoragest ( localStorage.getItem() )
