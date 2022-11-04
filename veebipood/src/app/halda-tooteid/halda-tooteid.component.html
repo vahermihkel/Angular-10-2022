@@ -1,0 +1,14 @@
+<!-- <div *ngFor="let toode of tooted; let i = index; let esimeneToode = first; let viimaneToode = last">
+  <div routerLink="/toode/{{i}}">
+    {{ esimeneToode }}
+    {{ i }}
+    {{ toode }}<span *ngIf="viimaneToode === false">,</span>
+    {{ viimaneToode }}
+  </div>
+</div> -->
+
+<div *ngFor="let toode of tooted; let i = index">
+  <div>{{ toode }}</div>
+  <button (click)="kustuta(i)">x</button>
+  <button routerLink="/muuda/{{i}}">Muuda</button>
+</div>

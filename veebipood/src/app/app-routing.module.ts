@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AvalehtComponent } from './avaleht/avaleht.component';
+import { HaldaTooteidComponent } from './halda-tooteid/halda-tooteid.component';
 import { LisaToodeComponent } from './lisa-toode/lisa-toode.component';
 import { MeistComponent } from './meist/meist.component';
+import { MuudaToodeComponent } from './muuda-toode/muuda-toode.component';
 import { OstukorvComponent } from './ostukorv/ostukorv.component';
 import { PoedComponent } from './poed/poed.component';
 import { SeadedComponent } from './seaded/seaded.component';
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: "seaded", component: SeadedComponent },
   { path: "poed", component: PoedComponent },
   { path: "toode/:j2rjekorraNumber", component: YksikToodeComponent },
+  { path: "halda", component: HaldaTooteidComponent },
+  { path: "muuda/:j2rjekorraNumber", component: MuudaToodeComponent },
 ];
 
 @NgModule({

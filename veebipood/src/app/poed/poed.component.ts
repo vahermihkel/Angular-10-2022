@@ -11,7 +11,12 @@ export class PoedComponent implements OnInit {
   // saan muuta järjekorda, arvu
   // kui neid on meeletu hulk
   poed = poedFailist;
-  tootajad = ["Johnny", "George", "Michael", "James"];
+  tootajad = [
+    {nimi: "Johnny", amet: "CFO"}, 
+    {nimi: "George", amet: "CEO"}, 
+    {nimi: "Michael", amet: "CTO"}, 
+    {nimi: "James", amet: "Marketing"}
+  ];
 
 // list, array, massiiv
 
@@ -21,28 +26,32 @@ export class PoedComponent implements OnInit {
   }
 
   sorteeriAZ() {
-    this.poed.sort();
+    // this.poed.sort();
+    this.poed.sort((a,b) => a.nimi.localeCompare(b.nimi));
     // this.poed = this.poed.slice().sort();
   }
 
   sorteeriZA() {
-    this.poed.sort().reverse();
+    // this.poed.sort().reverse();
+    // this.poed.sort((a,b) => a.nimi.localeCompare(b.nimi)).reverse();
+    // this.poed.sort((a,b) => -1 * a.nimi.localeCompare(b.nimi));
+    this.poed.sort((a,b) => b.nimi.localeCompare(a.nimi));
     // this.poed = this.poed.slice().sort().reverse();
   }
 
   filtreeri() {
-    this.poed = this.poed.filter(pood => pood.endsWith("mäe"));
+    this.poed = this.poed.filter(pood => pood.nimi.endsWith("mäe"));
   }
 
   muudaK6iki() {
-    this.poed = this.poed.map(pood => "--" + pood);
+    this.poed = this.poed.map(pood => {return{nimi:"--" + pood.nimi, aeg: pood.aeg}});
   }
 
   originaali() {
     this.poed = poedFailist;
   }
 
-  kustuta(kustutatavPood: string) {
+  kustuta(kustutatavPood: any) {
     //   1               = ["Mustamäe", "Kristiine"].indexOf("Kristiine");
     const j2rjekorraNumber = this.poed.indexOf(kustutatavPood);
     // ["Mustamäe", "Kristiine"].splice(1,1);
@@ -50,7 +59,8 @@ export class PoedComponent implements OnInit {
   }
 
   lisa(vorm: NgForm) {
-    this.poed.push(vorm.value.pood);
+    // {nimi: vorm.value.nimi, aeg: vorm.value.aeg}
+    this.poed.push(vorm.value);
   }
 
   tyhjenda() {
@@ -58,7 +68,7 @@ export class PoedComponent implements OnInit {
   }
 
   sorteeriKasvavalt() {
-    this.poed.sort((a,b) => a.length - b.length);
+    this.poed.sort((a,b) => a.nimi.length - b.nimi.length);
   }
 
 }
