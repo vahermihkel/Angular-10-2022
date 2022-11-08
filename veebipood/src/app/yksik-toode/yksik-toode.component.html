@@ -1,2 +1,7 @@
-<div *ngIf="leitudToode !== undefined">{{ leitudToode }} </div>
+<div *ngIf="leitudToode !== undefined">
+  <img src="{{ leitudToode.pilt }}" alt="">
+  <div>{{ leitudToode.nimi }}</div>
+  <div>{{ leitudToode.hind }}</div>
+  <div>{{ leitudToode.aktiivne }}</div>
+</div>
 <div *ngIf="leitudToode === undefined">Toodet ei leitud</div>

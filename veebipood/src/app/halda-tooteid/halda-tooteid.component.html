@@ -8,7 +8,10 @@
 </div> -->
 
 <div *ngFor="let toode of tooted; let i = index">
-  <div>{{ toode }}</div>
+  <img src="{{ toode.pilt }}" alt="">
+  <div>{{ toode.nimi }}</div>
+  <div>{{ toode.hind }}</div>
+  <div>{{ toode.aktiivne }}</div>
   <button (click)="kustuta(i)">x</button>
   <button routerLink="/muuda/{{i}}">Muuda</button>
 </div>

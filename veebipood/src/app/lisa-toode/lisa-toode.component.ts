@@ -30,7 +30,10 @@ export class LisaToodeComponent implements OnInit {
 
 
     const tooted = JSON.parse(localStorage.getItem("tooted") || "[]");
-    tooted.push(vorm.value.nimi);
+    //   "Coca-cola"   või     "Nobe"
+    // tooted.push(vorm.value.nimi);
+    // {nimi: "Coca-cola", hind: "5"}
+    tooted.push(vorm.value);
     localStorage.setItem("tooted", JSON.stringify(tooted));
   }
 

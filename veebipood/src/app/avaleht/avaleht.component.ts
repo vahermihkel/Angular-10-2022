@@ -17,7 +17,7 @@ export class AvalehtComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  lisaOstukorvi(klikitudToode: string) {
+  lisaOstukorvi(klikitudToode: any) {
     // const ostukorvLS = localStorage.getItem("ostukorv") || "[]";
     // const ostukorv = JSON.parse(ostukorvLS);
     // ostukorv.push(klikitudToode);

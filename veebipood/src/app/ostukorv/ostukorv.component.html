@@ -4,7 +4,12 @@
 <div *ngIf="ostukorv.length === 0">Ostukorv on tühi</div>
 
 <div *ngFor="let ese of ostukorv">
-  {{ ese }}
+  <img src="{{ ese.pilt }}" alt="">
+  <div>{{ ese.nimi }}</div>
+  <div>{{ ese.hind }}</div>
+  <div>{{ ese.aktiivne }}</div>
   <button (click)="kustuta(ese)">x</button>
   <button (click)="lisa(ese)">+</button>
 </div>
+
+<div>Ostukorvi summa kokku: {{ kogusumma }}</div>

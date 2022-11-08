@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ostukorv.component.css']
 })
 export class OstukorvComponent implements OnInit {
-  ostukorv = JSON.parse(localStorage.getItem("ostukorv") || "[]");
+  ostukorv: any[] = JSON.parse(localStorage.getItem("ostukorv") || "[]");
+  kogusumma = 0;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {         
+    this.ostukorv.forEach(ese => this.kogusumma = this.kogusumma + ese.hind);
   }
 
         // "Fanta"
@@ -18,18 +20,24 @@ export class OstukorvComponent implements OnInit {
     const j2rjekorraNumber = this.ostukorv.indexOf(klikitudEse);
     this.ostukorv.splice(j2rjekorraNumber,1);
     localStorage.setItem("ostukorv", JSON.stringify(this.ostukorv));
+    this.kogusumma = 0;
+    this.ostukorv.forEach(ese => this.kogusumma = this.kogusumma + ese.hind);
   }
 
   tyhjenda() {
     // this.ostukorv.splice(0);
     this.ostukorv = [];
     localStorage.setItem("ostukorv", JSON.stringify(this.ostukorv));
+    this.kogusumma = 0;
+    // this.ostukorv.forEach(ese => this.kogusumma = this.kogusumma + ese.hind);
   }
 
   //   
   lisa(klikitudEse: string) {
     this.ostukorv.push(klikitudEse);
     localStorage.setItem("ostukorv", JSON.stringify(this.ostukorv));
+    this.kogusumma = 0;
+    this.ostukorv.forEach(ese => this.kogusumma = this.kogusumma + ese.hind);
   }
 
 }

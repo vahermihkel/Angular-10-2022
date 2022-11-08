@@ -13,6 +13,7 @@ import { PoedComponent } from './poed/poed.component';
 import { YksikToodeComponent } from './yksik-toode/yksik-toode.component';
 import { HaldaTooteidComponent } from './halda-tooteid/halda-tooteid.component';
 import { MuudaToodeComponent } from './muuda-toode/muuda-toode.component';
+import { ValitudComponent } from './valitud/valitud.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MuudaToodeComponent } from './muuda-toode/muuda-toode.component';
     YksikToodeComponent,
     HaldaTooteidComponent,
     MuudaToodeComponent,
+    ValitudComponent,
   ],
   imports: [  // IMPORDIN HTMLi MIDA EI EKSISTEERI TAVA HTML-s
     BrowserModule, // <--- *ngIf

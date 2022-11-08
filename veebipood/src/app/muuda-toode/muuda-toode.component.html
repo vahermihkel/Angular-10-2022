@@ -1,9 +1,17 @@
-<p>muuda-toode works!</p>
 
-<div>{{ leitudToode }}</div>
+<img src="{{ leitudToode.pilt }}" alt="">
+<!-- <div>{{ leitudToode.nimi }}</div>
+<div>{{ leitudToode.hind }}</div>
+<div>{{ leitudToode.aktiivne }}</div> -->
 
 <form (ngSubmit)="muuda(muutmiseVorm)" [formGroup]="muutmiseVorm">
   <label>Toote nimi</label> <br>
   <input formControlName="nimi" type="text"> <br>
+  <label>Toote hind</label> <br>
+  <input formControlName="hind" type="number"> <br>
+  <label>Toote aktiivne</label> <br>
+  <input formControlName="aktiivne" type="checkbox"> <br>
+  <label>Toote pilt</label> <br>
+  <input formControlName="pilt" type="text"> <br>
   <button>Muuda</button>
 </form>

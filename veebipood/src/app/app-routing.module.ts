@@ -8,6 +8,7 @@ import { MuudaToodeComponent } from './muuda-toode/muuda-toode.component';
 import { OstukorvComponent } from './ostukorv/ostukorv.component';
 import { PoedComponent } from './poed/poed.component';
 import { SeadedComponent } from './seaded/seaded.component';
+import { ValitudComponent } from './valitud/valitud.component';
 import { YksikToodeComponent } from './yksik-toode/yksik-toode.component';
 
 // localhost:4200/  ---> avaleht.component.html + .css kujunduse jaoks + .ts dünaamika jaoks
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "toode/:j2rjekorraNumber", component: YksikToodeComponent },
   { path: "halda", component: HaldaTooteidComponent },
   { path: "muuda/:j2rjekorraNumber", component: MuudaToodeComponent },
+  { path: "valitud", component: ValitudComponent },
 ];
 
 @NgModule({

@@ -1,9 +1,14 @@
 <br><br><br>
 
+<!-- ["Nobe", "Tesla", "Vichy"] -->
+<!-- [{nimi: "Nobe", hind: 32}, {nimi: "Tesla", hind: 98}, {nimi: "Vichy", hind: 7} ] -->
 <div *ngFor="let toode of tooted; let i = index">
 
   <div routerLink="/toode/{{i}}">
-    {{ toode }}
+    <img src="{{ toode.pilt }}" alt="">
+    <div>{{ toode.nimi }}</div>
+    <div>{{ toode.hind }}</div>
+    <div>{{ toode.aktiivne }}</div>
   </div>
 
   <button (click)="lisaOstukorvi(toode)">Lisa ostukorvi</button>

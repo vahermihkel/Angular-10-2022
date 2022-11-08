@@ -1,0 +1,21 @@
+
+<div *ngFor="let inimene of inimesed">
+  <div>{{ inimene.id }}</div>
+  <div>{{ inimene.name }}</div>
+  <div>{{ inimene.username }}</div>
+  <div>{{ inimene.email }}</div>
+  <button (click)="lisa(inimene)">Lisa</button>
+</div>
+
+
+<form (ngSubmit)="lisaUus(uusInimene)" #uusInimene="ngForm">
+  <label>ID</label> <br>
+  <input ngModel name="id" type="text"> <br>
+  <label>NAME</label> <br>
+  <input ngModel name="name" type="text"> <br>
+  <label>USERNAME</label> <br>
+  <input ngModel name="username" type="text"> <br>
+  <label>EMAIL</label> <br>
+  <input ngModel name="email" type="text"> <br>
+  <button>Sisesta</button>
+</form>

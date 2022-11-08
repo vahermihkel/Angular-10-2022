@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./yksik-toode.component.css']
 })
 export class YksikToodeComponent implements OnInit {
-  leitudToode = "";    // läheb HTMLi
+  leitudToode: any;    // läheb HTMLi
 
   // 1. mul on vaja leida KÕIK tooted
   // 2. mul on vaja midagi unikaalset tema kohta,

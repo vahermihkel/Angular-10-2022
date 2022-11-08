@@ -3,6 +3,12 @@
 <form (ngSubmit)="lisaToode(lisamiseVorm)" #lisamiseVorm="ngForm">
   <label>Toote nimi</label> <br>
   <input ngModel name="nimi" type="text"> <br>
+  <label>Toote hind</label> <br>
+  <input ngModel name="hind" type="number"> <br>
+  <label>Toote aktiivsus</label> <br>
+  <input ngModel name="aktiivne" type="checkbox"> <br>
+  <label>Toote pilt</label> <br>
+  <input ngModel name="pilt" type="text"> <br>
   <button *ngIf="sonum === 'Lisa uus toode!'">Sisesta</button> <br>
 </form>
 
