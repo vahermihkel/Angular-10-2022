@@ -1,0 +1,22 @@
+.lang {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.lang.active {
+  opacity: 1.0;
+}
+
+.lang:hover {
+  opacity: 0.7;
+}
+
+.lang:active {
+  padding: 1px;
+}
+
+.navbar-collapse {
+  justify-content: space-between;
+}

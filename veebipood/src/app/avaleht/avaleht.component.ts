@@ -18,11 +18,11 @@ export class AvalehtComponent implements OnInit {
   }
 
   lisaOstukorvi(klikitudToode: any) {
-    // const ostukorvLS = localStorage.getItem("ostukorv") || "[]";
-    // const ostukorv = JSON.parse(ostukorvLS);
-    // ostukorv.push(klikitudToode);
-    // const uuenenudOstukorv = JSON.stringify(ostukorv);
-    // localStorage.setItem("ostukorv", uuenenudOstukorv);
+    // let ostukorvLS: any = localStorage.getItem("ostukorv") || "[]";
+    // ostukorvLS = JSON.parse(ostukorvLS);
+    // ostukorvLS.push(klikitudToode);
+    // ostukorvLS = JSON.stringify(ostukorvLS);
+    // localStorage.setItem("ostukorv", ostukorvLS);
 
 
     const ostukorv = JSON.parse(localStorage.getItem("ostukorv") || "[]");

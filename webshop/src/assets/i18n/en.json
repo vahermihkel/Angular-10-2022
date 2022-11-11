@@ -1,0 +1,10 @@
+{
+  "nav": {
+      "admin": "To admin view",
+      "cart": "Cart"
+  },
+  "admin": {
+    "add-product": "Add new Product",
+    "maintain-products": "Maintain products"
+  }
+}

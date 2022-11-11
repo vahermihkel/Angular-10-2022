@@ -14,7 +14,10 @@ export class HaldaTooteidComponent implements OnInit {
   }
 
   kustuta(index: number) {
+    console.log(index);
+    console.log(this.tooted);
     this.tooted.splice(index,1);
+    console.log(this.tooted);
     localStorage.setItem("tooted", JSON.stringify(this.tooted));
   }
 
