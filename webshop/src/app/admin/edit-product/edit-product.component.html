@@ -1,1 +1,21 @@
-<p>edit-product works!</p>
+<div *ngIf="idUnique === false">Id ei ole unikaalne</div>
+
+<!-- a-form     NgForm -->
+                            <!-- a-form      NgFormGroup -->
+<form (ngSubmit)="updateProduct()" [formGroup]="editProductForm">
+  <label>ID</label> <br>
+  <input formControlName="id" type="number" (keyup)="checkIdUniqueness()"> <br>
+  <label>Name</label> <br>
+  <input formControlName="name" type="text"> <br>
+  <label>Price</label> <br>
+  <input formControlName="price" type="number"> <br>
+  <label>Image</label> <br>
+  <input formControlName="image" type="text"> <br>
+  <label>Category</label> <br>
+  <input formControlName="category" type="text"> <br>
+  <label>Description</label> <br>
+  <input formControlName="description" type="text"> <br>
+  <label>Active</label> <br>
+  <input formControlName="active" type="checkbox"> <br>
+  <button>Change</button>
+</form>

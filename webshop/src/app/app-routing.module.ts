@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: "toode", component: SingleProductComponent },
   { path: "admin", component: AdminhomeComponent },
   { path: "admin/lisa-toode", component: AddProductComponent },
-  { path: "admin/muuda-toode", component: EditProductComponent },
+  { path: "admin/muuda-toode/:id", component: EditProductComponent },
   { path: "admin/halda-tooteid", component: MaintainProductsComponent },
 ];
 

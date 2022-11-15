@@ -1,1 +1,14 @@
-<p>maintain-products works!</p>
+<input 
+  type="text" 
+  [(ngModel)]="searchedProduct" 
+  (keyup)="searchProducts()">
+
+<span>{{ products.length }} tk</span>
+
+<div *ngFor="let product of products">
+  <img src="{{product.image}}" alt="">
+  <div>{{ product.name }}</div>
+  <div>{{ product.price }} €</div>
+  <button class="btn btn-primary" routerLink="/admin/muuda-toode/{{product.id}}">Muuda</button>
+  <button class="btn btn-danger" (click)="deleteProduct(product)">Kustuta</button>
+</div>

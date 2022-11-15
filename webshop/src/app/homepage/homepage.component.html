@@ -1,1 +1,17 @@
-<p>homepage works!</p>
+<button *ngFor="let category of categories" (click)="filterByCategory(category)">
+  {{ category }}
+</button>
+
+<div>{{ products.length }} tk</div>
+
+<button (click)="sortAZ()">Sort A-Z</button>
+<button (click)="sortZA()">Sort Z-A</button>
+<button (click)="sortPriceAsc()">Sort price asc</button>
+<button (click)="sortPriceDesc()">Sort price desc</button>
+
+<div *ngFor="let product of products">
+  <img src="{{product.image}}" alt="">
+  <div>{{ product.name }}</div>
+  <div>{{ product.price }} €</div>
+  <button class="btn btn-primary">Lisa ostukorvi</button>
+</div>
