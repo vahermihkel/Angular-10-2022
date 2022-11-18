@@ -11,7 +11,7 @@ import { SingleProductComponent } from './single-product/single-product.componen
 const routes: Routes = [
   { path: "", component: HomepageComponent },
   { path: "ostukorv", component: CartComponent },
-  { path: "toode", component: SingleProductComponent },
+  { path: "toode/:id", component: SingleProductComponent },
   { path: "admin", component: AdminhomeComponent },
   { path: "admin/lisa-toode", component: AddProductComponent },
   { path: "admin/muuda-toode/:id", component: EditProductComponent },

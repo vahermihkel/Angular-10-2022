@@ -40,5 +40,21 @@ export class HomepageComponent implements OnInit {
   sortPriceDesc() {
     this.products.sort((a,b) => b.price - a.price);
   }
+        // {id: 1, name: "s", price: 21}
+  addToCart(clickedItem: any) {
+    const cartLS = localStorage.getItem("cart") || "[]";
+    const cart: any[] = JSON.parse(cartLS);
+    // {product: clickedItem, quantity: 1}
+    const index = cart.findIndex(element => element.product.id === clickedItem.id);
+    if (index >= 0) {
+      // tooted[j2rjekorraNumber]   (üksik-toode failis)
+      cart[index].quantity = cart[index].quantity + 1;
+    } else {
+      cart.push({"product": clickedItem, "quantity": 1});
+      //      {product: {id: 1, name: "s", price: 21}, quantity: 1}
+    }
+    const newCart = JSON.stringify(cart);
+    localStorage.setItem("cart", newCart);
+  }
 
 }

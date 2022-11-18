@@ -13,5 +13,5 @@
   <img src="{{product.image}}" alt="">
   <div>{{ product.name }}</div>
   <div>{{ product.price }} €</div>
-  <button class="btn btn-primary">Lisa ostukorvi</button>
+  <button class="btn btn-primary" (click)="addToCart(product)">Lisa ostukorvi</button>
 </div>

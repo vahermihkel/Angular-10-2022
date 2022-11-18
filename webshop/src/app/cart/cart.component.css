@@ -1,0 +1,44 @@
+.product {
+  display: flex; /* vasakult-paremale */
+  justify-content: space-between; /* ruumijaotus */
+  margin: 0 10%;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+.name {
+  width: 200px;
+}
+
+.price {
+  width: 100px;
+}
+
+.button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.button:active {
+  padding: 1px;
+}
+
+.quantity {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sum {
+  width: 100px;
+}

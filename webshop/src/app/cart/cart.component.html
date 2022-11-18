@@ -1,1 +1,21 @@
-<p>cart works!</p>
+
+<div *ngIf="cart.length === 0">Ostukorv on tühi</div>
+<div *ngIf="cart.length > 0">Kokku: {{ cartTotalItems}} tk (erinevat {{ cart.length }} )</div>
+<div class="product" *ngFor="let item of cart; let i = index">
+  <img class="image" src="{{item.product.image}}" alt="">
+  <div routerLink="/toode/{{item.product.id}}" class="name">{{ item.product.name }}</div>
+  <div class="price">{{ item.product.price }} €</div>
+  <div class="quantity">
+    <img class="button" (click)="decreaseQuantity(i)" src="assets/minus.png" alt="">
+    <div>{{ item.quantity }} tk</div>
+    <img class="button" (click)="increaseQuantity(i)" src="assets/plus.png" alt="">
+  </div>
+  <div class="sum">{{ (item.product.price * item.quantity).toFixed(2) }} €</div>
+  <img class="button" (click)="remove(i)" src="assets/remove.png" alt="">
+</div>
+
+<div>Kogusumma: {{ cartSum.toFixed(2) }}</div>
+
+<!--  
+  {product: clickedItem, quantity: 1}
+  {product: {id: 1, name: "s", price: 21}, quantity: 1} -->
