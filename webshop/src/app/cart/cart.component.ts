@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,8 +10,9 @@ export class CartComponent implements OnInit {
   cart: any[] = JSON.parse(localStorage.getItem("cart") || "[]");
   cartSum = 0;
   cartTotalItems = 0;
+  parcelMachines: any[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
    
   // {product: clickedItem, quantity: 1}
@@ -19,6 +21,9 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cart.forEach(element => this.cartSum = this.cartSum + element.product.price * element.quantity);
     this.cart.forEach(element => this.cartTotalItems = this.cartTotalItems + element.quantity);
+    this.http.get<any[]>("https://www.omniva.ee/locations.json").subscribe(response => 
+      this.parcelMachines = response.filter(element => element.A0_NAME === "EE")
+      );
   }
 
   remove(i: number) {

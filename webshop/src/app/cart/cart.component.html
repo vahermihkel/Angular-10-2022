@@ -19,3 +19,11 @@
 <!--  
   {product: clickedItem, quantity: 1}
   {product: {id: 1, name: "s", price: 21}, quantity: 1} -->
+
+<!-- <div>{{ parcelMachines }} </div> -->
+
+<select>
+  <option *ngFor="let pm of parcelMachines">
+    {{ pm.NAME }}
+  </option>
+</select>

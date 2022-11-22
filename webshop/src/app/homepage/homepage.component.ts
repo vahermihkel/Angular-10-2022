@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import productsFromFile from "../../assets/products.json";
 
@@ -7,17 +8,29 @@ import productsFromFile from "../../assets/products.json";
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  products = productsFromFile;
+  // products = productsFromFile;
+  products: any[] = [];
+  private dbProducts: any[] = [];
   // categories = new Set(["football", "football", "football", "basketball", "basketball"]);
-  categories = new Set(productsFromFile.map(element => element.category));
+  categories: any[] = [];
+  private productsDbUrl = "https://angular-10-22-default-rtdb.europe-west1.firebasedatabase.app/products.json";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get<any[]>(this.productsDbUrl).subscribe(response => {
+      this.products = response.slice(); // .slice() -> mälukoha kaotamine
+      this.dbProducts = response.slice(); // programm ei näeks neid identsena (tulevad samast kohast)
+      this.categories = [...new Set(this.products.map(element => element.category))];
+    });
+  }
+
+  backToDbProducts() {
+    this.products = this.dbProducts.slice(); // .slice() -> mälukoha kaotamine
   }
 
   filterByCategory(categoryClicked: string) {
-    this.products = productsFromFile.filter(element => element.category === categoryClicked);
+    this.products = this.dbProducts.filter(element => element.category === categoryClicked);
   }
 
   sortAZ() {

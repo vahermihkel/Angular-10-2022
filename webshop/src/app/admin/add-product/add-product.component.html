@@ -1,1 +1,19 @@
-<p>add-product works!</p>
+<form (ngSubmit)="addProduct(addProductForm)" #addProductForm="ngForm">
+  <label>ID</label> <br>
+  <input ngModel name="id" type="number"> <br>
+  <label>Name</label> <br>
+  <input ngModel name="name" type="text"> <br>
+  <label>Price</label> <br>
+  <input ngModel name="price" type="number"> <br>
+  <label>Image</label> <br>
+  <input ngModel name="image" type="text"> <br>
+  <label>Category</label> <br>
+  <input ngModel name="category" type="text"> <br>
+  <label>Description</label> <br>
+  <input ngModel name="description" type="text"> <br>
+  <label>Active</label> <br>
+  <input ngModel name="active" type="checkbox"> <br>
+  <button *ngIf="message === 'Lisa uus toode!'">Sisesta</button> <br>
+</form>
+
+<div>{{ message }}</div>

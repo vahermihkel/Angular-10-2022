@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     AddProductComponent,
     EditProductComponent,
     MaintainProductsComponent,
-    AdminhomeComponent
+    AdminhomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
