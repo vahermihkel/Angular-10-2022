@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from 'src/app/services/database.service';
 // import productsFromFile from "../../../assets/products.json";
 
 @Component({
@@ -11,12 +12,12 @@ export class MaintainProductsComponent implements OnInit {
   products: any[] = [];
   searchedProduct = "";
   private dbProducts: any[] = [];
-  private productsDbUrl = "https://angular-10-22-default-rtdb.europe-west1.firebasedatabase.app/products.json";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private databaseService: DatabaseService) { }
 
   ngOnInit(): void {
-    this.http.get<any[]>(this.productsDbUrl).subscribe(response => {
+    this.http.get<any[]>(this.databaseService.productsDbUrl).subscribe(response => {
       this.products = response.slice(); // .slice() -> mälukoha kaotamine
       this.dbProducts = response.slice(); // programm ei näeks neid identsena (tulevad samast kohast)
     });
@@ -27,7 +28,7 @@ export class MaintainProductsComponent implements OnInit {
     this.dbProducts.splice(i,1);
     this.products = this.dbProducts;
     this.searchProducts();
-    this.http.put(this.productsDbUrl, this.dbProducts).subscribe();
+    this.http.put(this.databaseService.productsDbUrl, this.dbProducts).subscribe();
   }
 
   searchProducts() {

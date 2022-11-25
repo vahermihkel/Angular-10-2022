@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastService } from 'angular-toastify';
 import productsFromFile from "../../assets/products.json";
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-homepage',
@@ -13,12 +16,14 @@ export class HomepageComponent implements OnInit {
   private dbProducts: any[] = [];
   // categories = new Set(["football", "football", "football", "basketball", "basketball"]);
   categories: any[] = [];
-  private productsDbUrl = "https://angular-10-22-default-rtdb.europe-west1.firebasedatabase.app/products.json";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, 
+    private databaseService: DatabaseService,
+    private _toastService: ToastService,
+    private translateService: TranslateService) { }
 
   ngOnInit(): void {
-    this.http.get<any[]>(this.productsDbUrl).subscribe(response => {
+    this.http.get<any[]>(this.databaseService.productsDbUrl).subscribe(response => {
       this.products = response.slice(); // .slice() -> mälukoha kaotamine
       this.dbProducts = response.slice(); // programm ei näeks neid identsena (tulevad samast kohast)
       this.categories = [...new Set(this.products.map(element => element.category))];
@@ -68,6 +73,7 @@ export class HomepageComponent implements OnInit {
     }
     const newCart = JSON.stringify(cart);
     localStorage.setItem("cart", newCart);
+    this._toastService.success(this.translateService.instant('toast.added-to-cart'));
   }
 
 }

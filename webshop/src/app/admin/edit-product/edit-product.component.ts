@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import productsFromFile from "../../../assets/products.json";
+import { ActivatedRoute, Router } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
+// import productsFromFile from "../../../assets/products.json";
 
 @Component({
   selector: 'app-edit-product',
@@ -12,29 +14,38 @@ export class EditProductComponent implements OnInit {
   editProductForm!: FormGroup;
   private index!: number;
   idUnique = true;
+  private products: any[] = [];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+    private http: HttpClient,
+    private databaseService: DatabaseService,
+    private router: Router) { }
 
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get("id"));
-    console.log(productId)
-    const productFound: any = productsFromFile.find(element => element.id === productId);
-    console.log(productFound);
-    this.index = productsFromFile.indexOf(productFound);
 
-    this.editProductForm = new FormGroup({
-      "id": new FormControl(productFound.id),
-      "name": new FormControl(productFound.name),
-      "price": new FormControl(productFound.price),
-      "image": new FormControl(productFound.image),
-      "category": new FormControl(productFound.category),
-      "description": new FormControl(productFound.description),
-      "active": new FormControl(productFound.active)
+    this.http.get<any[]>(this.databaseService.productsDbUrl).subscribe(response => {
+      const productFound: any = response.find(element => element.id === productId);
+      this.index = response.indexOf(productFound);
+      this.products = response;
+  
+      this.editProductForm = new FormGroup({
+        "id": new FormControl(productFound.id),
+        "name": new FormControl(productFound.name),
+        "price": new FormControl(productFound.price),
+        "image": new FormControl(productFound.image),
+        "category": new FormControl(productFound.category),
+        "description": new FormControl(productFound.description),
+        "active": new FormControl(productFound.active)
+      })
     })
   }
 
   updateProduct() {
-    productsFromFile[this.index] = this.editProductForm.value;
+    this.products[this.index] = this.editProductForm.value;
+    this.http.put(this.databaseService.productsDbUrl, this.products).subscribe(() => 
+      this.router.navigateByUrl("/admin/halda-tooteid")
+    );
   }
 
   checkIdUniqueness() {
@@ -42,7 +53,7 @@ export class EditProductComponent implements OnInit {
     // .findIndex --> leiab järjekorranumbri 0-...., kui ei leia, siis on -1
     
 
-    const found = productsFromFile.find(element => element.id === this.editProductForm.value.id);
+    const found = this.products.find(element => element.id === this.editProductForm.value.id);
     if (found === undefined) {
       this.idUnique = true;
     } else {

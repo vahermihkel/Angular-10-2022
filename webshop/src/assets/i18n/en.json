@@ -6,5 +6,8 @@
   "admin": {
     "add-product": "Add new Product",
     "maintain-products": "Maintain products"
+  },
+  "toast": {
+    "added-to-cart": "Successfully added to cart"
   }
 }

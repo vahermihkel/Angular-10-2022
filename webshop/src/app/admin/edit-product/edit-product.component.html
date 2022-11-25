@@ -2,7 +2,7 @@
 
 <!-- a-form     NgForm -->
                             <!-- a-form      NgFormGroup -->
-<form (ngSubmit)="updateProduct()" [formGroup]="editProductForm">
+<form *ngIf="editProductForm !== undefined" (ngSubmit)="updateProduct()" [formGroup]="editProductForm">
   <label>ID</label> <br>
   <input formControlName="id" type="number" (keyup)="checkIdUniqueness()"> <br>
   <label>Name</label> <br>

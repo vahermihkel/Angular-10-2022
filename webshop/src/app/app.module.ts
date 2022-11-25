@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+
+import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,11 +16,6 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import { MaintainProductsComponent } from './admin/maintain-products/maintain-products.component';
 import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
@@ -34,6 +35,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularToastifyModule,
     HttpClientModule,
         TranslateModule.forRoot({
             loader: {
@@ -43,7 +45,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
             }
         })
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

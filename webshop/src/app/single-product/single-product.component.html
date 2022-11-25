@@ -1,1 +1,8 @@
-<p>single-product works!</p>
+<div *ngIf="productFound !== undefined">
+  <img src="{{productFound.image}}" alt="">
+  <div>{{productFound.id}}</div>
+  <div>{{productFound.name}}</div>
+  <div>{{productFound.price}}</div>
+  <div>{{productFound.category}}</div>
+  <div>{{productFound.description}}</div>
+</div>

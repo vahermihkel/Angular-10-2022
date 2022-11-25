@@ -6,5 +6,8 @@
   "admin": {
     "add-product": "Lisa uus toode",
     "maintain-products": "Halda tooteid"
+  },
+  "toast": {
+    "added-to-cart": "Edukalt uus toode ostukorvi lisatud"
   }
 }
