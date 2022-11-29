@@ -9,5 +9,13 @@
   },
   "toast": {
     "added-to-cart": "Edukalt uus toode ostukorvi lisatud"
-  }
+  },
+  "home": {
+    "sortaz": "Sorteeri A-Z",
+    "sortza": "Sorteeri Z-A",
+    "sort-price-asc": "Sorteeri hind kasvavalt",
+    "sort-price-desc": "Sorteeri hind kahanevalt",
+    "add-to-cart": "Lisa ostukorvi"
+  },
+  "remove-filters": "Eemalda filtrid"
 }

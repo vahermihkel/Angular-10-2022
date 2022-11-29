@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CartProduct } from '../models/cart-product.model';
+import { ParcelMachine } from '../models/parcel-machine.model';
 
 @Component({
   selector: 'app-cart',
@@ -7,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cart: any[] = JSON.parse(localStorage.getItem("cart") || "[]");
+  // {product: Product, quantity: number}
+  cart: CartProduct[] = JSON.parse(localStorage.getItem("cart") || "[]");
   cartSum = 0;
   cartTotalItems = 0;
-  parcelMachines: any[] = [];
+  parcelMachines: ParcelMachine[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +24,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cart.forEach(element => this.cartSum = this.cartSum + element.product.price * element.quantity);
     this.cart.forEach(element => this.cartTotalItems = this.cartTotalItems + element.quantity);
-    this.http.get<any[]>("https://www.omniva.ee/locations.json").subscribe(response => 
+    this.http.get<ParcelMachine[]>("https://www.omniva.ee/locations.json").subscribe(response => 
       this.parcelMachines = response.filter(element => element.A0_NAME === "EE")
       );
   }

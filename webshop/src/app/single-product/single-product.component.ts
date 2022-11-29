@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../models/product.model';
 import { DatabaseService } from '../services/database.service';
 
 @Component({
@@ -10,19 +11,16 @@ import { DatabaseService } from '../services/database.service';
 })
 export class SingleProductComponent implements OnInit {
   // products = productsFromFile;
-  productFound: any;
+  productFound!: Product | undefined;
 
   constructor(private http: HttpClient,
     private databaseService: DatabaseService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const urlId = this.route.snapshot.paramMap.get("id");
-    console.log(urlId);
-    this.http.get<any[]>(this.databaseService.productsDbUrl).subscribe(response => {
-      console.log(response);
-      this.productFound = response.find(element => element.id == urlId);
-      console.log(this.productFound);
+    const urlId = Number(this.route.snapshot.paramMap.get("id"));
+    this.http.get<Product[]>(this.databaseService.productsDbUrl).subscribe(response => {
+      this.productFound = response.find(element => element.id === urlId);
     });
   }
 

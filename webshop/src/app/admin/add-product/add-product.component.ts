@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastService } from 'angular-toastify';
+import { Product } from 'src/app/models/product.model';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-  private dbProducts: any[] = [];
+  private dbProducts: Product[] = [];
   idUnique = true;
 
   constructor(private http: HttpClient,
@@ -18,7 +19,7 @@ export class AddProductComponent implements OnInit {
     private _toastService: ToastService) { }
 
   ngOnInit(): void {
-    this.http.get<any[]>(this.databaseService.productsDbUrl).subscribe(response => {
+    this.http.get<Product[]>(this.databaseService.productsDbUrl).subscribe(response => {
       this.dbProducts = response.slice(); // programm ei näeks neid identsena (tulevad samast kohast)
     });
   }

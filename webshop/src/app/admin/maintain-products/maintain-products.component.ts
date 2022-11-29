@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 import { DatabaseService } from 'src/app/services/database.service';
 // import productsFromFile from "../../../assets/products.json";
 
@@ -9,21 +10,22 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./maintain-products.component.css']
 })
 export class MaintainProductsComponent implements OnInit {
-  products: any[] = [];
+  products: Product[] = [];
   searchedProduct = "";
-  private dbProducts: any[] = [];
+  private dbProducts: Product[] = [];
+  descriptionLetters = 5;
 
   constructor(private http: HttpClient,
     private databaseService: DatabaseService) { }
 
   ngOnInit(): void {
-    this.http.get<any[]>(this.databaseService.productsDbUrl).subscribe(response => {
+    this.http.get<Product[]>(this.databaseService.productsDbUrl).subscribe(response => {
       this.products = response.slice(); // .slice() -> mälukoha kaotamine
       this.dbProducts = response.slice(); // programm ei näeks neid identsena (tulevad samast kohast)
     });
   }
 
-  deleteProduct(productClicked: any) {
+  deleteProduct(productClicked: Product) {
     const i = this.dbProducts.findIndex(element => element.id === productClicked.id);
     this.dbProducts.splice(i,1);
     this.products = this.dbProducts;

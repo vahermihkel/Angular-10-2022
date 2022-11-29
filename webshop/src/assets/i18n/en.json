@@ -9,5 +9,13 @@
   },
   "toast": {
     "added-to-cart": "Successfully added to cart"
-  }
+  },
+  "home": {
+    "sortaz": "Sort A-Z",
+    "sortza": "Sort Z-A",
+    "sort-price-asc": "Sort price ascending",
+    "sort-price-desc": "Sort price descending",
+    "add-to-cart": "Add to cart"
+  },
+  "remove-filters": "Remove filters"
 }

@@ -6,6 +6,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { EditProductComponent } from './admin/edit-product/edit-product.componen
 import { MaintainProductsComponent } from './admin/maintain-products/maintain-products.component';
 import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DescriptionShortenerPipe } from './pipes/description-shortener.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     EditProductComponent,
     MaintainProductsComponent,
     AdminhomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DescriptionShortenerPipe
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FormsModule,
     ReactiveFormsModule,
     AngularToastifyModule,
+    NgxSliderModule,
     HttpClientModule,
         TranslateModule.forRoot({
             loader: {

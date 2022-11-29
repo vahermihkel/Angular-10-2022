@@ -1,8 +1,11 @@
+import { Options } from '@angular-slider/ngx-slider';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from 'angular-toastify';
-import productsFromFile from "../../assets/products.json";
+import { CartProduct } from '../models/cart-product.model';
+// import productsFromFile from "../../assets/products.json";
+import { Product } from '../models/product.model';
 import { DatabaseService } from '../services/database.service';
 
 @Component({
@@ -12,10 +15,19 @@ import { DatabaseService } from '../services/database.service';
 })
 export class HomepageComponent implements OnInit {
   // products = productsFromFile;
-  products: any[] = [];
-  private dbProducts: any[] = [];
+  products: Product[] = [];
+  private dbProducts: Product[] = [];
   // categories = new Set(["football", "football", "football", "basketball", "basketball"]);
-  categories: any[] = [];
+  categories: string[] = [];
+  currentDate = new Date();
+  percentFromDb = 0.5;
+
+  minValue: number = 0;
+  maxValue: number = 799;
+  options: Options = {
+    floor: 0,
+    ceil: 999
+  };
 
   constructor(private http: HttpClient, 
     private databaseService: DatabaseService,
@@ -23,11 +35,30 @@ export class HomepageComponent implements OnInit {
     private translateService: TranslateService) { }
 
   ngOnInit(): void {
-    this.http.get<any[]>(this.databaseService.productsDbUrl).subscribe(response => {
+    this.http.get<Product[]>(this.databaseService.productsDbUrl).subscribe(response => {
+      // console.log("VÕTAN ANDMEBAASIST ASJU");
       this.products = response.slice(); // .slice() -> mälukoha kaotamine
       this.dbProducts = response.slice(); // programm ei näeks neid identsena (tulevad samast kohast)
+      // console.log(response);
+      response.sort((a,b) => a.price - b.price);
+      // console.log(response[0].price);
+      // console.log(response[response.length-1].price);
       this.categories = [...new Set(this.products.map(element => element.category))];
+      this.options = {
+        floor: 0,
+        ceil: 999
+      }
     });
+    setInterval(() => {
+      this.currentDate = new Date();
+    }, 1000)
+  }
+
+  filterProductsByPrice() {
+    // console.log(this.dbProducts);
+    // console.log(this.minValue);
+    this.products = this.dbProducts.filter(element => 
+      element.price >= this.minValue && element.price <= this.maxValue );
   }
 
   backToDbProducts() {
@@ -59,9 +90,9 @@ export class HomepageComponent implements OnInit {
     this.products.sort((a,b) => b.price - a.price);
   }
         // {id: 1, name: "s", price: 21}
-  addToCart(clickedItem: any) {
+  addToCart(clickedItem: Product) {
     const cartLS = localStorage.getItem("cart") || "[]";
-    const cart: any[] = JSON.parse(cartLS);
+    const cart: CartProduct[] = JSON.parse(cartLS);
     // {product: clickedItem, quantity: 1}
     const index = cart.findIndex(element => element.product.id === clickedItem.id);
     if (index >= 0) {
@@ -77,3 +108,7 @@ export class HomepageComponent implements OnInit {
   }
 
 }
+
+
+// Leaflet - kaardirakendus (paneme kõik poed)
+// emailjs.com
