@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { DatabaseService } from 'src/app/services/database.service';
@@ -16,6 +16,7 @@ export class EditProductComponent implements OnInit {
   private index!: number;
   idUnique = true;
   private products: Product[] = [];
+  private productId = -1;
 
   constructor(private route: ActivatedRoute,
     private http: HttpClient,
@@ -23,21 +24,21 @@ export class EditProductComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    const productId = Number(this.route.snapshot.paramMap.get("id"));
+    this.productId = Number(this.route.snapshot.paramMap.get("id"));
 
     this.http.get<Product[]>(this.databaseService.productsDbUrl).subscribe(response => {
-      const productFound: Product | undefined = response.find(element => element.id === productId);
+      const productFound: Product | undefined = response.find(element => element.id === this.productId);
       if (productFound !== undefined) {
         this.index = response.indexOf(productFound);
         this.products = response;
     
         this.editProductForm = new FormGroup({
-          "id": new FormControl(productFound.id),
-          "name": new FormControl(productFound.name),
-          "price": new FormControl(productFound.price),
-          "image": new FormControl(productFound.image),
-          "category": new FormControl(productFound.category),
-          "description": new FormControl(productFound.description),
+          "id": new FormControl(productFound.id, [Validators.required]),
+          "name": new FormControl(productFound.name, [Validators.required]),
+          "price": new FormControl(productFound.price, [Validators.required]),
+          "image": new FormControl(productFound.image, [Validators.required, Validators.pattern(/^\S*$/)]),
+          "category": new FormControl(productFound.category, [Validators.required, Validators.pattern(/^[a-zA-ZÜÕÖÄüõöä \-,]+$/)]),
+          "description": new FormControl(productFound.description, [Validators.required]),
           "active": new FormControl(productFound.active)
         })
       }
@@ -54,7 +55,11 @@ export class EditProductComponent implements OnInit {
   checkIdUniqueness() {
     // .find --> leiab toote ja kui ei leia, siis on undefined
     // .findIndex --> leiab järjekorranumbri 0-...., kui ei leia, siis on -1
-    
+    if (this.editProductForm.value.id === this.productId) {
+      this.idUnique = true;
+      return; // see return tähistab siin, et ära enam edasi sellest funktsioonis mine
+              // variant nr 2 -> return asemele if alumise loogelise sulu lõpus else blokk
+    }
 
     const found = this.products.find(element => element.id === this.editProductForm.value.id);
     if (found === undefined) {

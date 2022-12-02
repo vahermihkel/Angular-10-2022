@@ -112,3 +112,12 @@ export class HomepageComponent implements OnInit {
 
 // Leaflet - kaardirakendus (paneme kõik poed)
 // emailjs.com
+
+// 02.12 -> lõpetame 14.00    Vormi valideerimine    KODUS: Nortali proovitöö
+// 06.12 -> tavapärane päev   Nortali proovitöö minupoolne lahendus / Maksmine   KODUS: iseseisva projekti alustamine
+// 09.12 -> 1h15min      Iseseisva projekti ülevaade    Enda poolt mingisuguse teema (Kujundus)  KODUS: iseseisva projekti jätkamine
+// 16.12 -> 2ak/h 12.00-13.30   Iseseisva projekti lõplik vaatamine
+//                  Jagate ekraani, näitate mida ägedat tegite. Ja huvitavamaid koodiblokke
+//                  Iseseisva projekti ainuke nõue on, et oleks tehtud Angularis ja üles laetud Firebase-i
+
+// 70 ak/h --> 70/4 === 17.5   

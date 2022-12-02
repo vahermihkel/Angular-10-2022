@@ -21,14 +21,20 @@
   [(ngModel)]="descriptionLetters" 
   type="number">
 
-<div *ngFor="let product of products">
-  <img src="{{product.image}}" alt="">
-  <div>{{ product.name }}</div>
-  <div>{{ product.price }} €</div>
-  <div>{{ product.id }}</div>
-  <div>{{ product.category }}</div>
-  <div>{{ product.description | descriptionShortener:descriptionLetters }}</div>
-  <div>{{ product.active }}</div>
+<div [ngClass]="{
+  'active-product': product.active === true, 
+  'inactive-product': product.active === false
+}" 
+  *ngFor="let product of products">
+  <div (click)="changeProductActive(product)">
+    <img src="{{product.image}}" alt="">
+    <div>{{ product.name }}</div>
+    <div>{{ product.price }} €</div>
+    <div>{{ product.id }}</div>
+    <div>{{ product.category }}</div>
+    <div>{{ product.description | descriptionShortener:descriptionLetters }}</div>
+    <div>{{ product.active }}</div>
+  </div>
   <button class="btn btn-primary" routerLink="/admin/muuda-toode/{{product.id}}">Muuda</button>
   <button class="btn btn-danger" (click)="deleteProduct(product)">Kustuta</button>
 </div>

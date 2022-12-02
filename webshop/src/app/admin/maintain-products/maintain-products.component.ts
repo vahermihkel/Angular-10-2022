@@ -22,6 +22,7 @@ export class MaintainProductsComponent implements OnInit {
     this.http.get<Product[]>(this.databaseService.productsDbUrl).subscribe(response => {
       this.products = response.slice(); // .slice() -> mälukoha kaotamine
       this.dbProducts = response.slice(); // programm ei näeks neid identsena (tulevad samast kohast)
+      console.log(this.dbProducts);
     });
   }
 
@@ -37,6 +38,12 @@ export class MaintainProductsComponent implements OnInit {
     // console.log(this.searchedProduct);
     this.products = this.dbProducts.filter(element => 
       element.name.toLowerCase().includes(this.searchedProduct.toLowerCase()));
+  }
+
+  changeProductActive(productClicked: Product) {
+    const i = this.dbProducts.findIndex(element => element.id === productClicked.id);
+    this.dbProducts[i].active = !productClicked.active;
+    this.http.put(this.databaseService.productsDbUrl, this.dbProducts).subscribe();
   }
 
 }
