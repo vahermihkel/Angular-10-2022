@@ -19,6 +19,7 @@ import { MaintainProductsComponent } from './admin/maintain-products/maintain-pr
 import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DescriptionShortenerPipe } from './pipes/description-shortener.pipe';
+import { MaintainCategoriesComponent } from './admin/maintain-categories/maintain-categories.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DescriptionShortenerPipe } from './pipes/description-shortener.pipe';
     MaintainProductsComponent,
     AdminhomeComponent,
     NotFoundComponent,
-    DescriptionShortenerPipe
+    DescriptionShortenerPipe,
+    MaintainCategoriesComponent
   ],
   imports: [
     BrowserModule,

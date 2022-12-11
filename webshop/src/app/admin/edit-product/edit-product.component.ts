@@ -17,6 +17,7 @@ export class EditProductComponent implements OnInit {
   idUnique = true;
   private products: Product[] = [];
   private productId = -1;
+  categories: {id: number, name: string}[] = [];
 
   constructor(private route: ActivatedRoute,
     private http: HttpClient,
@@ -24,6 +25,12 @@ export class EditProductComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.http.get<any>(this.databaseService.categoriesDbUrl).subscribe(categoriesFromDb => {
+      if (categoriesFromDb !== null) {
+        this.categories = categoriesFromDb.slice();
+      }
+    })
+
     this.productId = Number(this.route.snapshot.paramMap.get("id"));
 
     this.http.get<Product[]>(this.databaseService.productsDbUrl).subscribe(response => {

@@ -12,6 +12,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class AddProductComponent implements OnInit {
   private dbProducts: Product[] = [];
+  categories: {id: number, name: string}[] = [];
   idUnique = true;
 
   constructor(private http: HttpClient,
@@ -22,6 +23,11 @@ export class AddProductComponent implements OnInit {
     this.http.get<Product[]>(this.databaseService.productsDbUrl).subscribe(response => {
       this.dbProducts = response.slice(); // programm ei näeks neid identsena (tulevad samast kohast)
     });
+    this.http.get<any>(this.databaseService.categoriesDbUrl).subscribe(categoriesFromDb => {
+      if (categoriesFromDb !== null) {
+        this.categories = categoriesFromDb.slice();
+      }
+    })
   }
 
   addProduct(form: NgForm) {

@@ -10,7 +10,10 @@
   <label>Image</label> <br>
   <input ngModel name="image" type="text" required> <br>
   <label>Category</label> <br>
-  <input ngModel name="category" type="text" required> <br>
+  <!-- <input ngModel name="category" type="text" required> <br> -->
+  <select ngModel name="category">
+    <option *ngFor="let category of categories">{{ category.name }}</option>
+  </select> <br>
   <label>Description</label> <br>
   <input ngModel name="description" type="text" required> <br>
   <label>Active</label> <br>
